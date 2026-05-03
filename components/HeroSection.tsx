@@ -66,29 +66,16 @@ export default function HeroSection() {
       className="relative w-full grain"
       style={{ minHeight: "100svh", background: "var(--black)" }}
     >
-      {/* Video placeholder */}
+      {/* Video element */}
       <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute inset-0 flex items-center justify-center"
-          style={{ background: "#050505" }}
-        >
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse at 30% 60%, rgba(232,0,15,0.04) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(245,240,235,0.02) 0%, transparent 50%)",
-            }}
-          />
-          <span
-            className="text-[10px] tracking-[0.6em] uppercase select-none"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "rgba(245,240,235,0.08)",
-            }}
-          >
-            ▶ VIDEO_PLACEHOLDER
-          </span>
-        </div>
+        <video 
+          src="/videos/hero.mp4" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         {/* Cinematic overlay */}
         <div
           className="absolute inset-0"

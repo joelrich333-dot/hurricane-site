@@ -125,33 +125,11 @@ export default function GallerySection() {
             className="w-full relative overflow-hidden"
             style={{ paddingBottom: "120%" }}
           >
-            <div
-              className="absolute inset-0 flex flex-col items-center justify-center gap-3 transition-transform duration-700 group-hover:scale-105"
-              style={{ background: "#111" }}
-            >
-              <span
-                className="text-[9px] tracking-[0.5em] uppercase"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  color: "rgba(245,240,235,0.2)",
-                }}
-              >
-                IMAGE_PLACEHOLDER
-              </span>
-              <div
-                className="w-6 h-px"
-                style={{ background: "rgba(232,0,15,0.4)" }}
-              />
-              <span
-                className="text-xs tracking-widest"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  color: "rgba(245,240,235,0.1)",
-                }}
-              >
-                01
-              </span>
-            </div>
+            <img
+              src="/images/gallery/gallery_1.png"
+              alt="Gallery Image 1"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
             {/* Hover overlay */}
             <div
               className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -176,29 +154,11 @@ export default function GallerySection() {
               className="relative w-full overflow-hidden"
               style={{ paddingBottom: item.id === 5 ? "75%" : item.id === 4 ? "80%" : "100%" }}
             >
-              <div
-                className="absolute inset-0 flex flex-col items-center justify-center gap-2 transition-transform duration-700 group-hover:scale-105"
-                style={{ background: item.id % 2 === 0 ? "#0d0d0d" : "#111" }}
-              >
-                <span
-                  className="text-[8px] tracking-[0.5em] uppercase"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    color: "rgba(245,240,235,0.15)",
-                  }}
-                >
-                  IMAGE_PLACEHOLDER
-                </span>
-                <span
-                  className="text-xs"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    color: "rgba(245,240,235,0.08)",
-                  }}
-                >
-                  0{item.id}
-                </span>
-              </div>
+              <img
+                src={`/images/gallery/gallery_${((item.id - 1) % 3) + 1}.png`}
+                alt={`Gallery Image ${item.id}`}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: "rgba(232,0,15,0.05)" }}
