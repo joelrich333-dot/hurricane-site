@@ -7,314 +7,183 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const damenServices = [
+const damen = [
   { name: "Haarschnitt", price: "ab €15" },
   { name: "Waschen & Schneiden", price: "ab €22" },
-  { name: "Föhnen & Stylen", price: "ab €12" },
   { name: "Coloration", price: "ab €45" },
   { name: "Balayage", price: "ab €65" },
-  { name: "Tönung", price: "ab €28" },
-  { name: "Haarkur", price: "ab €15" },
   { name: "Hochsteckfrisur", price: "ab €35" },
 ];
 
-const herrenServices = [
+const herren = [
   { name: "Haarschnitt", price: "ab €11" },
   { name: "Waschen & Schneiden", price: "ab €18" },
   { name: "Bart rasieren", price: "ab €8" },
   { name: "Rasur mit Messer", price: "ab €15" },
-  { name: "Bart formen & föhnen", price: "ab €12" },
   { name: "Coloration", price: "ab €18" },
-  { name: "Haarkur", price: "ab €12" },
-  { name: "Haarverlängerung", price: "auf Anfrage" },
 ];
 
 export default function ServicesSection() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLElement>(null);
 
   useGSAP(
     () => {
       gsap.fromTo(
-        ".services-number",
-        { opacity: 0, x: -30 },
+        ".svc-heading",
+        { opacity: 0, y: 45 },
         {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".services-number",
-            start: "top 90%",
-          },
+          opacity: 1, y: 0, duration: 1, ease: "power3.out",
+          scrollTrigger: { trigger: ".svc-heading", start: "top 88%" },
         }
       );
-
       gsap.fromTo(
-        ".services-heading",
-        { opacity: 0, y: 50 },
+        ".svc-col",
+        { opacity: 0, y: 35 },
         {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".services-heading",
-            start: "top 88%",
-          },
+          opacity: 1, y: 0, duration: 0.9, stagger: 0.18, ease: "power3.out",
+          scrollTrigger: { trigger: ".svc-cols", start: "top 85%" },
         }
       );
-
       gsap.fromTo(
-        ".services-category",
-        { opacity: 0, y: 40 },
+        ".svc-row",
+        { opacity: 0, x: -16 },
         {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".services-grid",
-            start: "top 82%",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        ".service-row",
-        { opacity: 0, x: -20 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.5,
-          stagger: 0.04,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".service-row",
-            start: "top 85%",
-          },
+          opacity: 1, x: 0, duration: 0.45, stagger: 0.045, ease: "power2.out",
+          scrollTrigger: { trigger: ".svc-row", start: "top 88%" },
         }
       );
     },
-    { scope: sectionRef }
+    { scope: ref }
   );
 
   return (
     <section
-      ref={sectionRef}
+      ref={ref}
       id="leistungen"
-      className="relative py-32 md:py-48 px-8 md:px-16 lg:px-24"
-      style={{ background: "var(--black)" }}
+      className="py-28 md:py-40 px-8 md:px-14 lg:px-20"
+      style={{ background: "var(--bg2)" }}
     >
-      {/* Section label */}
-      <div className="flex items-center gap-6 mb-16">
+      {/* Label */}
+      <div className="flex items-center gap-4 mb-14">
         <span
-          className="services-number text-xs tracking-[0.5em] uppercase"
-          style={{
-            fontFamily: "var(--font-mono)",
-            color: "var(--red)",
-          }}
+          className="text-[10px] tracking-[0.5em] uppercase"
+          style={{ fontFamily: "var(--font-mono)", color: "var(--teal)" }}
         >
           01
         </span>
-        <div
-          className="h-px flex-1 max-w-[60px]"
-          style={{ background: "rgba(245,240,235,0.12)" }}
-        />
+        <div className="h-px w-10" style={{ background: "var(--border-t)" }} />
       </div>
 
       {/* Heading */}
-      <div className="mb-20 max-w-4xl">
-        <h2
-          className="services-heading leading-[0.9] uppercase font-black"
-          style={{
-            fontFamily: "var(--font-playfair)",
-            fontSize: "clamp(2.5rem, 7vw, 7rem)",
-            color: "var(--white)",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          Unsere
-          <br />
-          <span style={{ color: "var(--white)", fontStyle: "italic" }}>
-            Leistungen
-          </span>
-        </h2>
-      </div>
+      <h2
+        className="svc-heading font-black uppercase leading-[0.9] mb-20"
+        style={{
+          fontFamily: "var(--font-playfair)",
+          fontSize: "clamp(2.2rem, 6vw, 6rem)",
+          color: "var(--white)",
+          letterSpacing: "-0.02em",
+        }}
+      >
+        Unsere{" "}
+        <span style={{ color: "var(--teal)", fontStyle: "italic" }}>
+          Leistungen
+        </span>
+      </h2>
 
-      {/* Category hero prices */}
-      <div className="services-grid grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+      {/* Two columns */}
+      <div className="svc-cols grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24">
         {[
-          { label: "Damen", price: "ab €15", count: damenServices.length },
-          { label: "Herren", price: "ab €11", count: herrenServices.length },
-        ].map((cat) => (
-          <div
-            key={cat.label}
-            className="services-category relative p-10 overflow-hidden"
-            style={{
-              border: "1px solid rgba(245,240,235,0.08)",
-            }}
-          >
-            <div
-              className="absolute top-0 left-0 h-1 w-12"
-              style={{ background: "var(--red)" }}
-            />
+          { title: "Damen", subtitle: "ab €15", items: damen },
+          { title: "Herren", subtitle: "ab €11", items: herren },
+        ].map((col) => (
+          <div key={col.title} className="svc-col">
+            {/* Category header */}
+            <div className="flex items-baseline justify-between mb-8 pb-5" style={{ borderBottom: "1px solid var(--border-t)" }}>
+              <h3
+                className="font-black uppercase"
+                style={{
+                  fontFamily: "var(--font-playfair)",
+                  fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)",
+                  color: "var(--white)",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {col.title}
+              </h3>
+              <span
+                className="text-lg font-black"
+                style={{
+                  fontFamily: "var(--font-playfair)",
+                  color: "var(--teal)",
+                }}
+              >
+                {col.subtitle}
+              </span>
+            </div>
+
+            {/* Service rows */}
+            <div className="flex flex-col gap-0">
+              {col.items.map((s) => (
+                <div
+                  key={s.name}
+                  className="svc-row flex items-center justify-between py-4 transition-colors duration-200"
+                  style={{ borderBottom: "1px solid rgba(0,196,189,0.07)" }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-cormorant)",
+                      fontSize: "1.15rem",
+                      color: "var(--dim)",
+                      letterSpacing: "0.02em",
+                    }}
+                  >
+                    {s.name}
+                  </span>
+                  <span
+                    className="svc-price text-xs tracking-widest transition-colors duration-200"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      color: "rgba(235,245,244,0.3)",
+                    }}
+                  >
+                    {s.price}
+                  </span>
+                </div>
+              ))}
+            </div>
+
             <p
-              className="text-xs tracking-[0.4em] uppercase mb-4"
-              style={{
-                fontFamily: "var(--font-mono)",
-                color: "rgba(245,240,235,0.4)",
-              }}
+              className="mt-5 text-[10px] tracking-[0.3em] uppercase"
+              style={{ fontFamily: "var(--font-mono)", color: "rgba(0,196,189,0.35)" }}
             >
-              {cat.label}
-            </p>
-            <p
-              className="font-black uppercase leading-none"
-              style={{
-                fontFamily: "var(--font-playfair)",
-                fontSize: "clamp(2rem, 5vw, 4rem)",
-                color: "var(--white)",
-              }}
-            >
-              {cat.price}
-            </p>
-            <p
-              className="mt-4 text-xs tracking-widest"
-              style={{
-                fontFamily: "var(--font-mono)",
-                color: "rgba(245,240,235,0.25)",
-              }}
-            >
-              {cat.count} Leistungen verfügbar
+              Weitere Leistungen auf Anfrage
             </p>
           </div>
         ))}
       </div>
 
-      {/* Divider */}
-      <div
-        className="h-px w-full mb-16"
-        style={{ background: "rgba(245,240,235,0.06)" }}
-      />
-
-      {/* Services grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-0">
-        {/* Damen */}
-        <div>
-          <p
-            className="text-[10px] tracking-[0.5em] uppercase mb-8"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "rgba(245,240,235,0.3)",
-            }}
-          >
-            — Damen
-          </p>
-          <div className="flex flex-col">
-            {damenServices.map((s) => (
-              <div
-                key={s.name}
-                className="service-row accent-diagonal flex items-center justify-between py-4 pl-4"
-                style={{
-                  borderBottom: "1px solid rgba(245,240,235,0.05)",
-                }}
-              >
-                <span
-                  className="text-sm"
-                  style={{
-                    fontFamily: "var(--font-cormorant)",
-                    fontSize: "1.1rem",
-                    color: "rgba(245,240,235,0.8)",
-                    letterSpacing: "0.02em",
-                  }}
-                >
-                  {s.name}
-                </span>
-                <span
-                  className="service-price text-xs tracking-widest ml-8"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    color: "rgba(245,240,235,0.4)",
-                    transition: "color 0.3s ease",
-                  }}
-                >
-                  {s.price}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Herren */}
-        <div className="mt-12 md:mt-0">
-          <p
-            className="text-[10px] tracking-[0.5em] uppercase mb-8"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "rgba(245,240,235,0.3)",
-            }}
-          >
-            — Herren
-          </p>
-          <div className="flex flex-col">
-            {herrenServices.map((s) => (
-              <div
-                key={s.name}
-                className="service-row accent-diagonal flex items-center justify-between py-4 pl-4"
-                style={{
-                  borderBottom: "1px solid rgba(245,240,235,0.05)",
-                }}
-              >
-                <span
-                  className="text-sm"
-                  style={{
-                    fontFamily: "var(--font-cormorant)",
-                    fontSize: "1.1rem",
-                    color: "rgba(245,240,235,0.8)",
-                    letterSpacing: "0.02em",
-                  }}
-                >
-                  {s.name}
-                </span>
-                <span
-                  className="service-price text-xs tracking-widest ml-8"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    color: "rgba(245,240,235,0.4)",
-                    transition: "color 0.3s ease",
-                  }}
-                >
-                  {s.price}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* CTA */}
       <div className="mt-20 flex justify-center">
         <a
-          href="#termin"
-          className="inline-flex items-center gap-4 px-10 py-5 text-xs tracking-[0.3em] uppercase font-bold transition-all duration-300"
+          href="#kontakt"
+          className="inline-flex items-center gap-3 px-8 py-4 text-[11px] tracking-[0.3em] uppercase font-bold transition-all duration-300"
           style={{
             fontFamily: "var(--font-mono)",
-            color: "var(--white)",
-            border: "1px solid rgba(245,240,235,0.2)",
+            color: "var(--red)",
+            border: "1px solid var(--border-r)",
           }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor =
-              "var(--red)";
-            (e.currentTarget as HTMLAnchorElement).style.color = "var(--red)";
+            const el = e.currentTarget as HTMLAnchorElement;
+            el.style.background = "var(--red)";
+            el.style.color = "var(--white)";
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor =
-              "rgba(245,240,235,0.2)";
-            (e.currentTarget as HTMLAnchorElement).style.color = "var(--white)";
+            const el = e.currentTarget as HTMLAnchorElement;
+            el.style.background = "transparent";
+            el.style.color = "var(--red)";
           }}
         >
-          Termin vereinbaren
-          <span>→</span>
+          Termin vereinbaren →
         </a>
       </div>
     </section>

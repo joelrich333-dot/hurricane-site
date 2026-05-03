@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Playfair_Display, Space_Mono, Cormorant } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
 
 const playfair = Playfair_Display({
@@ -48,7 +47,6 @@ export default function RootLayout({
     >
       <body>
         <SmoothScroll>
-          <CustomCursor />
           <Navbar />
           {children}
         </SmoothScroll>
