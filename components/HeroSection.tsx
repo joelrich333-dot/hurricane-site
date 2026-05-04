@@ -90,7 +90,7 @@ export default function HeroSection() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Friseur—
+              Hurricane—
             </p>
           </div>
           <div className="overflow-hidden" style={{ paddingLeft: "clamp(3rem, 12vw, 14rem)" }}>

@@ -14,11 +14,6 @@ const reviews = [
     text: "Absolut der beste Friseur in München. Das Team ist unglaublich professionell und freundlich. Bin seit 3 Jahren Stammkunde.",
   },
   {
-    name: "Sarah L.",
-    location: "Schwabing",
-    text: "Ich bin immer wieder begeistert! Präziser Haarschnitt, entspannte Atmosphäre und faire Preise. Klare Empfehlung!",
-  },
-  {
     name: "Fatima A.",
     location: "München",
     text: "Das Hurricane-Team hat meine Haare komplett transformiert. Endlich ein Friseur, der wirklich zuhört.",
@@ -52,7 +47,7 @@ export default function ReviewsSection() {
           { opacity: 0, y: 40 },
           {
             opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
-            delay: i * 0.12,
+            delay: i * 0.15,
             scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" },
           }
         );
@@ -65,7 +60,7 @@ export default function ReviewsSection() {
     <section
       ref={ref}
       id="bewertungen"
-      className="py-28 md:py-40 px-8 md:px-14 lg:px-20"
+      className="py-44 md:py-64 px-8 md:px-14 lg:px-20"
       style={{ background: "var(--bg2)" }}
     >
       {/* Label */}
@@ -80,7 +75,7 @@ export default function ReviewsSection() {
       </div>
 
       {/* Heading + rating side by side */}
-      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12 mb-16">
+      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12 mb-24">
         <h2
           className="rev-heading font-black uppercase leading-[0.9]"
           style={{
@@ -103,7 +98,7 @@ export default function ReviewsSection() {
           <div className="flex items-baseline gap-2">
             <span
               className="font-black"
-              style={{ fontFamily: "var(--font-playfair)", fontSize: "2.8rem", color: "var(--white)", lineHeight: 1 }}
+              style={{ fontFamily: "var(--font-playfair)", fontSize: "3.5rem", color: "var(--white)", lineHeight: 1 }}
             >
               4.9
             </span>
@@ -117,12 +112,12 @@ export default function ReviewsSection() {
         </div>
       </div>
 
-      {/* Review cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {/* Review cards — 2 cards, more space */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {reviews.map((r, i) => (
           <div
             key={i}
-            className="rev-card flex flex-col gap-5 p-8 transition-colors duration-300"
+            className="rev-card flex flex-col gap-8 p-10 transition-colors duration-300"
             style={{
               border: "1px solid var(--border-t)",
               background: "rgba(0,196,189,0.03)",
@@ -136,15 +131,15 @@ export default function ReviewsSection() {
           >
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, j) => (
-                <span key={j} style={{ color: "var(--teal)", fontSize: "0.7rem" }}>★</span>
+                <span key={j} style={{ color: "var(--teal)", fontSize: "0.75rem" }}>★</span>
               ))}
             </div>
             <blockquote
               style={{
                 fontFamily: "var(--font-cormorant)",
-                fontSize: "1.1rem",
+                fontSize: "1.25rem",
                 color: "var(--dim)",
-                lineHeight: 1.75,
+                lineHeight: 1.8,
                 letterSpacing: "0.02em",
                 fontStyle: "italic",
                 flexGrow: 1,
@@ -157,7 +152,7 @@ export default function ReviewsSection() {
                 <p className="text-xs tracking-widest uppercase" style={{ fontFamily: "var(--font-mono)", color: "var(--white)" }}>
                   {r.name}
                 </p>
-                <p className="text-[10px] tracking-widest mt-0.5" style={{ fontFamily: "var(--font-mono)", color: "var(--dim)" }}>
+                <p className="text-[10px] tracking-widest mt-1" style={{ fontFamily: "var(--font-mono)", color: "var(--dim)" }}>
                   {r.location}
                 </p>
               </div>

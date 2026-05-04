@@ -45,7 +45,7 @@ export default function ContactSection() {
     <section
       ref={ref}
       id="kontakt"
-      className="py-28 md:py-40 px-8 md:px-14 lg:px-20"
+      className="py-44 md:py-64 px-8 md:px-14 lg:px-20"
       style={{ background: "var(--bg)" }}
     >
       {/* Label */}
@@ -61,7 +61,7 @@ export default function ContactSection() {
 
       {/* Heading */}
       <h2
-        className="con-heading font-black uppercase leading-[0.9] mb-20"
+        className="con-heading font-black uppercase leading-[0.9] mb-28 md:mb-36"
         style={{
           fontFamily: "var(--font-playfair)",
           fontSize: "clamp(2.2rem, 6vw, 6rem)",
@@ -73,49 +73,55 @@ export default function ContactSection() {
         <span style={{ color: "var(--teal)", fontStyle: "italic" }}>Sie uns.</span>
       </h2>
 
-      <div className="con-cols grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
-        {/* Address + contact */}
-        <div className="con-col flex flex-col gap-12">
-          <div>
-            <p className="text-[10px] tracking-[0.5em] uppercase mb-5" style={{ fontFamily: "var(--font-mono)", color: "var(--teal)" }}>
-              Adresse
+      <div className="con-cols grid grid-cols-1 md:grid-cols-2 gap-20 lg:gap-32">
+        {/* Address */}
+        <div className="con-col flex flex-col gap-10">
+          <p className="text-[10px] tracking-[0.5em] uppercase" style={{ fontFamily: "var(--font-mono)", color: "var(--teal)" }}>
+            Adresse
+          </p>
+          <div style={{ lineHeight: 1.9 }}>
+            <p
+              className="font-semibold"
+              style={{
+                fontFamily: "var(--font-cormorant)",
+                fontSize: "clamp(1.5rem, 2.5vw, 2.2rem)",
+                color: "var(--white)",
+              }}
+            >
+              Hurricane Friseur
             </p>
-            <div style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.25rem", color: "var(--dim)", lineHeight: 1.7 }}>
-              <p className="font-semibold" style={{ color: "var(--white)" }}>Hurricane Friseur</p>
-              <p>Leopoldstraße 42</p>
-              <p>80802 München</p>
-            </div>
+            <p style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.5rem, 2.5vw, 2.2rem)", color: "var(--dim)" }}>
+              Leopoldstraße 42
+            </p>
+            <p style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.5rem, 2.5vw, 2.2rem)", color: "var(--dim)" }}>
+              80802 München
+            </p>
           </div>
 
-          <div>
-            <p className="text-[10px] tracking-[0.5em] uppercase mb-5" style={{ fontFamily: "var(--font-mono)", color: "var(--teal)" }}>
-              Kontakt
-            </p>
-            <div className="flex flex-col gap-4">
-              {[
-                { label: "Tel", value: "+49 89 123 456 78", href: "tel:+498912345678" },
-                { label: "Mail", value: "info@hurricane-friseur.de", href: "mailto:info@hurricane-friseur.de" },
-                { label: "IG", value: "@hurricane_friseur", href: "#" },
-              ].map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="link-line flex items-center gap-3"
-                  style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem", color: "var(--dim)", letterSpacing: "0.04em" }}
-                >
-                  <span className="text-[9px] uppercase tracking-widest w-8" style={{ color: "var(--teal)" }}>
-                    {item.label}
-                  </span>
-                  {item.value}
-                </a>
-              ))}
-            </div>
+          <div className="flex flex-col gap-5 mt-4">
+            {[
+              { label: "Tel", value: "+49 89 123 456 78", href: "tel:+498912345678" },
+              { label: "Mail", value: "info@hurricane-friseur.de", href: "mailto:info@hurricane-friseur.de" },
+              { label: "IG", value: "@hurricane_friseur", href: "#" },
+            ].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="link-line flex items-center gap-3"
+                style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem", color: "var(--dim)", letterSpacing: "0.04em" }}
+              >
+                <span className="text-[9px] uppercase tracking-widest w-8" style={{ color: "var(--teal)" }}>
+                  {item.label}
+                </span>
+                {item.value}
+              </a>
+            ))}
           </div>
         </div>
 
-        {/* Hours */}
-        <div className="con-col">
-          <div className="flex items-center justify-between mb-5">
+        {/* Hours + CTA */}
+        <div className="con-col flex flex-col gap-10">
+          <div className="flex items-center justify-between">
             <p className="text-[10px] tracking-[0.5em] uppercase" style={{ fontFamily: "var(--font-mono)", color: "var(--teal)" }}>
               Öffnungszeiten
             </p>
@@ -133,11 +139,11 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <div className="flex flex-col mb-14">
+          <div className="flex flex-col">
             {hours.map((h) => (
               <div
                 key={h.day}
-                className="flex items-center justify-between py-4"
+                className="flex items-center justify-between py-6"
                 style={{ borderBottom: "1px solid var(--border-t)" }}
               >
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.8rem", color: "var(--dim)" }}>
@@ -157,19 +163,21 @@ export default function ContactSection() {
           </div>
 
           {/* Booking CTA */}
-          <a
-            href="#termin"
-            className="inline-flex items-center gap-3 px-7 py-4 text-[11px] tracking-[0.3em] uppercase font-bold transition-all duration-300"
-            style={{
-              fontFamily: "var(--font-mono)",
-              background: "var(--red)",
-              color: "var(--white)",
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.85"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
-          >
-            Jetzt Termin buchen →
-          </a>
+          <div className="mt-8">
+            <a
+              href="#termin"
+              className="inline-flex items-center gap-3 px-7 py-4 text-[11px] tracking-[0.3em] uppercase font-bold transition-all duration-300"
+              style={{
+                fontFamily: "var(--font-mono)",
+                background: "var(--red)",
+                color: "var(--white)",
+              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.85"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
+            >
+              Jetzt Termin buchen →
+            </a>
+          </div>
         </div>
       </div>
     </section>
